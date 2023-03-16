@@ -1,0 +1,5 @@
+Покрыть тестами
+CurrencyConverter.php
+CurrencyRepository.php
+CurrencyUpdater.php
+FixerIoProvider.php

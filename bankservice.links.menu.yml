@@ -1,0 +1,12 @@
+bankservice.rates:
+  title: 'BankService Rates'
+  description: ''
+  parent: system.admin_config_system
+  route_name: bankservice.rates
+  weight: 10
+bankservice.settings_form:
+  title: 'BankService Config'
+  description: ''
+  parent: system.admin_config_system
+  route_name: bankservice.settings_form
+  weight: 10

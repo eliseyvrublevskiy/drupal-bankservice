@@ -1,0 +1,15 @@
+bankservice.rates:
+  path: '/admin/config/bankservice/rates'
+  defaults:
+    _controller: 'Drupal\bankservice\Controller\CurrencyRatesController::display'
+    _title: 'Currency Rates'
+  requirements:
+    _permission: 'administer site configuration'
+
+bankservice.settings_form:
+  path: '/admin/config/system/bankservice'
+  defaults:
+    _title: 'BankService settings'
+    _form: 'Drupal\bankservice\Form\SettingsForm'
+  requirements:
+    _permission: 'administer bankservice configuration'

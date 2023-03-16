@@ -1,0 +1,13 @@
+services:
+  bankservice.converter:
+    class: Drupal\bankservice\Service\CurrencyConverter
+    arguments: ['@bankservice.updater','@bankservice.repository']
+  bankservice.repository:
+    class: Drupal\bankservice\Service\CurrencyRepository
+    arguments: ['@database']
+  bankservice.updater:
+    class: Drupal\bankservice\Service\CurrencyUpdater
+    arguments: ['@database', '@bankservice.updater.fixerIoProvider','@bankservice.repository']
+  bankservice.updater.fixerIoProvider:
+    class: Drupal\bankservice\Service\CurrencyUpdater\FixerIoProvider
+    arguments: ['@http_client']

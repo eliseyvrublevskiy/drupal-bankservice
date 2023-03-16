@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Contains bankservice.install functions.
+ */
+
+use Drupal\Core\Database\Schema\Schema;
+use Drupal\Core\Database\Schema\SchemaException;
+
+
+const TABLE_RATE = 'currency_rate';
+/**
+ * Implements hook_schema().
+ */
+ function bankservice_schema() {
+   $schema[TABLE_RATE] = [
+     'description' => 'Stores some values for sorting fun.',
+     'fields' => [
+             'id' => [
+                 'description' => 'Simple unique ID.',
+                 'type' => 'serial',
+                 'not null' => TRUE,
+             ],
+             'from' => [
+                 'type' => 'varchar',
+                 'length' => 3,
+                 'not null' => TRUE,
+                 'description' => 'The currency code.',
+             ],
+             'to' => [
+                 'type' => 'varchar',
+                 'length' => 3,
+                 'not null' => TRUE,
+                 'description' => 'The currency code.',
+             ],
+             'rate' => [
+                 'type' => 'float',
+                 'size' => 'big',
+                 'not null' => TRUE,
+                 'description' => 'The exchange rate.',
+             ],
+     ],
+     'primary key' => ['id'],
+   ];
+
+   return $schema;
+ }
+
+/**
+ * Implements hook_uninstall().
+ */
+function bankservice_uninstall() {
+  // Remove the 'currency_rate' table.
+  \Drupal::database()->schema()->dropTable(TABLE_RATE);
+}

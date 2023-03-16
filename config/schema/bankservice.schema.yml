@@ -1,0 +1,10 @@
+bankservice.settings:
+  label: Fixer.io currency exchange settings
+  type: config_object
+  mapping:
+    api_key:
+      type: string
+      label: Fixer.io API key
+    last_time:
+      type: string
+      label: last cron time

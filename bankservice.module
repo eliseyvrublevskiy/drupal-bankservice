@@ -1,0 +1,24 @@
+<?php
+
+const DATE_FORMAT_TIME = "Y-m-d h:i";
+const DATE_FORMAT = "Y-m-d";
+
+/**
+ * Implements hook_cron().
+ */
+function bankservice_cron()
+{
+    //todo: переписать
+    $config = \Drupal::service('config.factory')->getEditable('bankservice.settings');
+    $lastTime = $config->get('last_time');
+    $now = new \DateTime();
+    if (!str_contains($lastTime,$now->format(DATE_FORMAT))) {
+        try {
+            \Drupal::service('bankservice.updater')->updateRates();
+            $config->set('last_time', $now->format(DATE_FORMAT_TIME))->save();
+        } catch (\Exception $exception) {
+            //todo: logger;
+        }
+    }
+
+}

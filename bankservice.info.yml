@@ -1,0 +1,7 @@
+name: BankService
+type: module
+description: 'A module for storing and converting currencies using Fixer.io API'
+core_version_requirement: ^9
+package: Custom
+dependencies:
+  - drupal:system (>= 9.0.0)
